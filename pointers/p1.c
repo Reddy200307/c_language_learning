@@ -1,7 +1,9 @@
 #include<stdio.h>
 int main(){
-    int a=10,b;
-    int *p=&a;
-    printf("a = %d a address =%p *p=%d  p=%d *p addree=%p \n",a,&a,*p,p,*p);
+    int num=-1;
+	short int *p=(short int *)&num;
+	*p=0;
+	num=num>>16;
+	printf("%\n",num);
     return 0;
 }

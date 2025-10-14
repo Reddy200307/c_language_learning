@@ -1,8 +1,9 @@
 #include<stdio.h>
 int main(){
-	static const int arr[]={1,2,3,4,5};
+	 int arr[]={1,2,3,4,5};
 	int * ptr=arr;
-	*(ptr+3)=45;
-	printf("%d \n",arr[3]);
+	printf("Enter the array element :- \n");
+	scanf("%d",&ptr[1]);
+	printf("%d \n",*(ptr+1));
 	return 0;
 }
