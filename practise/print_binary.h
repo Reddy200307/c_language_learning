@@ -27,3 +27,17 @@ void print_binary_char(unsigned char num){
     }
     printf("\n");
 }
+void print_binary_short_int(unsigned char num){
+    for(int i=0,count=0;i<16;i++)
+    {
+        if(count ==3){
+            printf("%d ",num>>i&1);
+            count=0;
+        }
+        else{
+            printf("%d",num>>i&1);
+            count++;
+        }
+    }
+    printf("\n");
+}
