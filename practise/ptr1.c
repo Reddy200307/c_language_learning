@@ -1,7 +1,11 @@
-#include<stdio.h>
-int main(){
-    int ary[4]={1,2,3,4};
-    int *p=ary+3;
-    printf("%d \n",p[-2]);
-    return 0 ;
+#include <stdio.h>
+#include <string.h>
+#include "./print_binary.h"
+
+int main()
+{
+int a=148;
+char *p=(char*)&a;
+printf("%d\n",*p);
 }
+
