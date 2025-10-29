@@ -4,8 +4,9 @@
 
 int main()
 {
-int a=148;
-char *p=(char*)&a;
-printf("%d\n",*p);
+char *p="Hai Friends",*p1=p;
+while(*p!='\0')
+++*p++;
+printf(" %s %s ",p,p1);
 }
 
