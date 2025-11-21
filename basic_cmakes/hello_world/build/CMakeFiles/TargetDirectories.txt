@@ -1,0 +1,3 @@
+/home/prashanth/programming/c_language/basic_cmakes/hello_world/build/CMakeFiles/main.dir
+/home/prashanth/programming/c_language/basic_cmakes/hello_world/build/CMakeFiles/edit_cache.dir
+/home/prashanth/programming/c_language/basic_cmakes/hello_world/build/CMakeFiles/rebuild_cache.dir

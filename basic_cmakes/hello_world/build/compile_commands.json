@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/prashanth/programming/c_language/basic_cmakes/hello_world/build",
+  "command": "/usr/bin/clang -g -o CMakeFiles/main.dir/main.c.o -c /home/prashanth/programming/c_language/basic_cmakes/hello_world/main.c",
+  "file": "/home/prashanth/programming/c_language/basic_cmakes/hello_world/main.c",
+  "output": "CMakeFiles/main.dir/main.c.o"
+}
+]
