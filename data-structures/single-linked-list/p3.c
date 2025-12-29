@@ -57,6 +57,26 @@ void InsertNode(int target,int data){
 
         
 }
+void DeleteNode(int target)
+{
+        Sll *temp=head,*ptr;
+        if(head==NULL){
+        printf("Zero Nodes First Create Nodes\n");
+        return;}
+        while (temp != NULL && temp->ptr->data != target){
+        temp = (Sll*)temp->ptr;
+        }
+        if(temp != NULL &&temp->ptr->data==target){
+                ptr=temp->ptr;
+                temp->ptr=temp->ptr->ptr;
+                free(ptr);
+
+        }
+        else{
+                printf("The target Node is not Present\n");
+        }
+
+}
 int main(){
         CreateNode(1);
         CreateNode(3);
@@ -65,7 +85,9 @@ int main(){
         InsertNode(1,2);
         CreateNode(6);
         CreateNode(7);
-        InsertNode(99, 5);
+        printf("The data is\n");
+        printData();
+        DeleteNode(5);
         printf("The data is\n");
         printData();
         Sll *temp;
