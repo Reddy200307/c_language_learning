@@ -1,5 +1,0 @@
-Hello this is Hello.txt
-This is another line
-This is other line
-This is other line
-hello
