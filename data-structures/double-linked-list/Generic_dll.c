@@ -10,6 +10,11 @@ DLL *head = NULL;
 DLL *NavPtr = NULL;
 DLL *CenterNode = NULL;
 int nodeCount = 0;
+enum Status
+{
+        Success,
+        Failure
+};
 void countIncremeent()
 {
         nodeCount++;
@@ -23,13 +28,15 @@ void viewData();
 void InsertNode();
 void printReverse();
 void deleteNode();
+void WriteTOFile();
+void ReadFromFile();
 int main()
 {
         int choice = 0;
         while (1)
         {
                 printf("Enter the choice\n");
-                printf("\033[34m1)Create Node\n2)Insert Node\n3)View Data\n4)Acid test(Print Rev)\n5)Delete Node\n6)Quit\n\033[0m");
+                printf("\033[34m1)Create Node\n2)Insert Node\n3)View Data\n4)Acid test(Print Rev)\n5)Delete Node\n6)Write to File\n7)Load From File\n8)Quit\n\033[0m");
                 scanf("%d", &choice);
                 switch (choice)
                 {
@@ -49,6 +56,12 @@ int main()
                         deleteNode();
                         break;
                 case 6:
+                        WriteTOFile();
+                        break;
+                case 7:
+                        ReadFromFile();
+                        break;
+                case 8:
                         DLL *temp = head;
                         while (temp != NULL)
                         {
@@ -252,4 +265,104 @@ void deleteNode()
                 printf("\033[32mDeleted Node\033[0m\n");
                 countDecrement();
         }
+}
+void WriteTOFile()
+{
+        FILE *fp;
+        DLL *temp = head;
+        if (head == NULL)
+        {
+                printf("No Nodes First Create  Node\n");
+                return;
+        }
+        fp = fopen("Hello.csv", "w");
+        if (fp != NULL)
+                printf("File Opened Successfully\n");
+        else
+        {
+                printf("Failed to Read File\n");
+                return;
+        }
+        if ((temp != NULL) && (temp->next == NULL) && (temp->prev == NULL)) // if its only head node
+        {
+                fprintf(fp, "%d,", temp->data);
+        }
+        else
+        {
+                while ((temp != NULL)) // printing if it is more than one node
+                {
+                        fprintf(fp, "%d,", temp->data);
+                        temp = temp->next;
+                }
+        }
+        printf("Written to file sucessfully\n");
+        if (fclose(fp) == Success)
+                printf("File Closed Successfully\n");
+        else
+                printf("Error Closing File\n");
+}
+
+void insertFromFile(int data)
+{
+
+        DLL *temp = NULL;
+        if (head == NULL)
+        {
+                printf("List is empty creating root node\n");
+                head = (DLL *)malloc(sizeof(DLL));
+                if (head != NULL)
+                {
+                        head->next = NULL;
+                        head->prev = NULL;
+                        head->data = data;
+                        NavPtr = head;
+                        printf("\033[32m Node Created Successfully \033[0m\n");
+                        countIncremeent();
+                }
+                else
+                        printf("\033[31m Error occured allocating memory \033[0m\n");
+        }
+        else
+        {
+                temp = (DLL *)malloc(sizeof(DLL));
+                if (temp != NULL)
+                {
+                        temp->data = data;
+                        temp->next = NULL;
+                        temp->prev = NavPtr;
+                        NavPtr->next = temp;
+                        NavPtr = temp;
+                        printf("\033[32m Node Created Successfully \033[0m\n");
+                        countIncremeent();
+                }
+                else
+                        printf("\033[31m Error occured allocating memory \033[0m\n");
+        }
+}
+
+void ReadFromFile()
+{
+        FILE *fp;
+        // DLL *temp = head;
+        fp = fopen("Hello.csv", "r");
+        int num = 0;
+        if (fp != NULL)
+        {
+                printf("File read Successfully");
+        }
+        else
+        {
+                printf("Error reading file verify if file is presnt\n");
+                return;
+        }
+        while (fscanf(fp, "%d,", &num) == 1)
+        {
+                insertFromFile(num);
+        }
+        printf("\n");
+
+        if (fclose(fp) == Success)
+                printf("File Closed Successfully\n");
+        else
+                printf("Error Closing File\n");
 }
