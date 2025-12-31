@@ -1,1 +1,23 @@
 a.out
+# Compiled binaries
+a.out
+*.exe
+
+# Object files
+*.o
+
+# Build directories
+build/
+CMakeCache.txt
+CMakeFiles/
+
+# Ninja
+.ninja_log
+.ninja_deps
+
+# VS Code
+.vscode/
+
+# Vim
+*.swp
+*.swo
